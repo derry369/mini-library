@@ -7,6 +7,113 @@
     <script defer src="library.js"></script>
 </head>
 <body>
+    <div class="ovr-cont">
+        <div class="menu-bar">
+            <div class="message">WELCOME, DERRICK</div>
+            <button autofocus class="add-book">NEW BOOK</button>
+        </div>
+
+        <div class="disp-tab">
+            <table>
+                <caption>YOUR BOOKS</caption>
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Author</th>
+                        <th>Content</th>
+                        <th>Date Added</th>
+                        <th>Read Status</th>
+                        <th>Action</th>
+                    </tr>
+    
+                </thead>
+
+                <tbody>
+
+                </tbody>
+                
+            </table>
+        </div>
+
+        <dialog>
+            <form method="dialog" id="newbk-form">
+                <div class="req-message">Asterisk<span class="req">*</span> indicates a mandatory field</div>
+                <p>
+                    <label for="title"><span class="req">*</span>Book Title:</label>
+                   <br><input type="text" name="book-title" id="title" required><br> 
+                </p>
+
+                <p>
+                    <label for="auth"><span class="req">*</span>Author's Name:</label>
+                   <br><input type="text" name="author" id="auth" required><br> 
+                </p>
+                <p>
+                    <label for="cont"><span class="req">*</span>Number of Pages:</label>
+                    <br><input type="number" name="content" id="cont" required><br> 
+                </p>
+
+                <p>
+                    <label for="readst">
+                        <span class="req">*</span>Have you read the book yet?
+                    </label>
+                    <div>
+                        <select name="readStatus" id="readst">
+                        <option value="READ">Yes</option>
+                        <option value="NOT READ YET">No</option>
+                        </select>
+                        <!--<input type="radio" name="readStatus" id="read" value="Read" required>
+                        <label for="read">Yes</label> -->
+                    </div>
+                   
+                </p>
+
+                <p class="sav-btn">
+                    <button type="submit">Save Book</button>
+                </p>
+        
+            </form>
+        </dialog>
+
+        <dialog id="edtDlg">
+            <form method="dialog" id="editForm">
+                <div class="req-message">Asterisk<span class="req">*</span> indicates a mandatory field</div>
+                <p>
+                    <label for="title"><span class="req">*</span>Book Title:</label>
+                   <br><input type="text" name="book-title" id="title" required><br> 
+                </p>
+
+                <p>
+                    <label for="auth"><span class="req">*</span>Author's Name:</label>
+                   <br><input type="text" name="author" id="auth" required><br> 
+                </p>
+                <p>
+                    <label for="cont"><span class="req">*</span>Number of Pages:</label>
+                    <br><input type="number" name="content" id="cont" required><br> 
+                </p>
+
+                <p>
+                    <label for="readst">
+                        <span class="req">*</span>Have you read the book yet?
+                    </label>
+                    <div>
+                        <select name="readStatus" id="readst">
+                        <option value="READ">Yes</option>
+                        <option value="NOT READ YET">No</option>
+                        </select>
+                        <!--<input type="radio" name="readStatus" id="read" value="Read" required>
+                        <label for="read">Yes</label> -->
+                    </div>
+                   
+                </p>
+
+                <p class="sav-btn">
+                    <button type="submit">Confirm Edit</button>
+                </p>
+        
+            </form>
+        </dialog>
+    </div>
+    
     
 </body>
 </html>
