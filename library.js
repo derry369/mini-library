@@ -1,19 +1,18 @@
 let myLibrary = [];
 
 // constructor function to create a new book object
-function Book(title, author, content, readStatus) {
+function Book(title, author, content, readStatus, dateMod) {
     this.Title = title,
     this.Author = author,
     this.Content = content,
-    this.readStatus = readStatus
+    this.readStatus = readStatus,
+    this.dateMod = dateMod
 }
 
 // 'add new book' dialog form open
 const newBook = document.querySelector('.add-book')
-    const dialog = document.querySelector('dialog')
-
+const dialog = document.querySelector('dialog')
     newBook.addEventListener("click", () => {
-    newBookForm.reset();
     dialog.showModal();
 });
 
@@ -22,24 +21,24 @@ const newBook = document.querySelector('.add-book')
 const newBookForm = document.querySelector('#newbk-form')
 newBookForm.addEventListener('submit', (e) => {
     addBookToLibrary();
+    newBookForm.reset();
 });
 
 
 
 function addBookToLibrary() {
     //copy form inputs into variables
-    const  title = newBookForm.elements[0].value;
+    const title = newBookForm.elements[0].value;
     const author = newBookForm.elements[1].value;
     const numPages = newBookForm.elements[2].value;
     const readSt = newBookForm.elements[3].value;
     
     // make new book object with constructor
-    const myBook = new Book(title, author, `${numPages} pages`, readSt)
+    const myDate = new Date();
+    const myBook = new Book(title, author, `${numPages} pages`, readSt, myDate)
     
     // add new book object to myLibrary array
     myLibrary.push(myBook);
-
-    dialog.close(); 
     
     //fill table with array objects
     fillTable();
@@ -68,10 +67,23 @@ function fillShelve(book, index) {
     cell4.textContent = book.Content
 
     let cell5 = document.createElement('td')
-    cell5.textContent = new Date()
+    cell5.textContent = book.dateMod;
 
     let cell6 = document.createElement('td')
-    cell6.textContent = book.readStatus
+
+    const checkMark = document.createElement('img');
+    checkMark.setAttribute('src', 'succ.png'); 
+    checkMark.setAttribute('alt', 'READ');
+
+    const notMark = document.createElement('img');
+    notMark.setAttribute('src', 'not.png'); 
+    notMark.setAttribute('alt', 'NOT READ');
+
+    if(book.readStatus === 'true') {
+        cell6.appendChild(checkMark); 
+    } else if(book.readStatus === 'false') {
+        cell6.appendChild(notMark)
+    }    
 
     let cell7 = document.createElement('td')
    
@@ -83,28 +95,39 @@ function fillShelve(book, index) {
     row.appendChild(cell6)
     row.appendChild(cell7)
 
+    //delete book feature
     let delBtn = document.createElement('button')
     delBtn.textContent = 'Delete Book';
-    delBtn.classList.add(index)
+    delBtn.setAttribute('id', index)
     cell7.appendChild(delBtn);
 
-    let editcell = document.createElement('div');
-    let editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit Book'
-
-    cell7.appendChild(editcell);
-    editcell.appendChild(editBtn);
-
-    delBtn.addEventListener('click', function(e) {
-        let delbk = +e.target.classList.value;
-        delete myLibrary[delbk];
-            fillTable();
+    delBtn.addEventListener('click', function() {
+        delete myLibrary[index];
+        fillTable();
 
     })
 
+    // change read status feature
+    let editcell = document.createElement('div');
+    let editBtn = document.createElement('button');
+    editBtn.textContent = 'Change Read Status'
+    cell7.appendChild(editcell);
+    editcell.appendChild(editBtn);   
+    
+    editBtn.addEventListener('click', function() {
+        if(myLibrary[index].readStatus === 'true') {
+            myLibrary[index].readStatus = 'false'
+            myLibrary[index].dateMod = new Date();
+            fillTable()
+        } else {
+            myLibrary[index].readStatus = 'true'
+            myLibrary[index].dateMod = new Date();
+            fillTable()
+        }
+    } )
+    
 }
 
- 
 
 
 

@@ -5,6 +5,18 @@
     height: 100vh;
 }
 
+.message {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-family: sans-serif;
+}
+
+button.add-book {
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
 .disp-tab {
     margin: auto;
     margin-top: 40px;
@@ -15,25 +27,19 @@ table {
     border: 2px solid rgb(200,200,200);
     letter-spacing: 1px;
     font-size: 0.8rem;
-  }
+}
 
-  caption {
+caption {
     font-size: 2rem;
     margin-bottom: 25px;
-  }
+}
   
-  td, th {
+td, th {
     border: 1px solid rgb(190,190,190);
     padding: 10px 20px;
-  }
+    font-size: 1.2rem;
+}
   
-/*  th {
-    background-color: rgb(235,235,235);
-  }
-  
-  td {
-    text-align: center;
-  }*/
 
 .menu-bar {
     display: flex;
@@ -76,11 +82,13 @@ dialog > p > button {
     margin-right: 5px;
 }
 
-.sav-btn {
+.sav-btn,
+.sav-btnEdt {
     text-align: center;
 }
 
-.sav-btn button {
+.sav-btn button,
+.sav-btnEdt {
     width: 150px;
     height: 30px;
     border-radius: 15px;
@@ -94,8 +102,8 @@ tr div button {
     background-color: red;
     border-radius: 8px;
     font-weight: bolder;
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
 }
 
 tr div button {
@@ -103,6 +111,11 @@ tr div button {
     margin-top: 10px;
     border-radius: 8px;
     font-weight: bolder;
+}
+
+td img {
+    height: 50px;
+    width: 60px;
 }
 
 
